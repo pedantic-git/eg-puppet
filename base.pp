@@ -11,3 +11,16 @@ file {'/tmp/base_file':
     notify => Exec['base exec'];
 }
 
+class indirection_one {
+    class {'indirection_two': }
+
+    file {'/tmp/indirection_one':
+        ensure => file;
+    }
+}
+
+class indirection_two {
+    file {'/tmp/indirection_two':
+        ensure => file;
+    }
+}
